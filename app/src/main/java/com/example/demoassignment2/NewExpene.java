@@ -9,10 +9,16 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Calendar;
+
+import database.DatabaseHelper;
+import database.ExpenseEntity;
 
 public class NewExpene extends AppCompatActivity {
     public static class DatePickerFragment extends DialogFragment
@@ -49,6 +55,36 @@ public class NewExpene extends AppCompatActivity {
                 DatePickerFragment datePicker = new DatePickerFragment();
                 datePicker.editText = expenseDate;
                 datePicker.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
+        Button saveBtn = findViewById(R.id.button);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText expenseNameControl = findViewById(R.id.editTextText);
+                String expenseName = expenseNameControl.getText().toString();
+
+                Spinner expenseTypeControl = findViewById(R.id.spinner);
+                String expenseType  = expenseTypeControl.getSelectedItem().toString();
+
+                EditText expenseAmountControl = findViewById(R.id.editTextNumberDecimal);
+                String expenseAmount = expenseAmountControl.getText().toString();
+
+                EditText expenseDateControl = findViewById(R.id.editTextDate);
+                String expenseDate = expenseDateControl.getText().toString();
+
+                ExpenseEntity expense = new ExpenseEntity();
+                expense.setExpenseName(expenseName);
+                expense.setExpenseType(expenseType);
+                expense.setAmount(expenseAmount);
+                expense.setExpenseDate(expenseDate);
+
+                DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+                long id = dbHelper.insertExpense(expense);
+                Toast.makeText(NewExpene.this,"Id: " + String.valueOf(id)
+                        + " da insert",Toast.LENGTH_LONG).show();
+
             }
         });
     }
