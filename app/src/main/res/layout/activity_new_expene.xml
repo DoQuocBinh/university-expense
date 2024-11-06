@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/design_default_color_primary"
+    android:foregroundTint="@color/design_default_color_primary"
     tools:context=".NewExpene">
 
     <TextView
@@ -40,6 +42,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:drawableEnd="@drawable/baseline_currency_pound_24"
         android:ems="10"
         android:hint="Amount"
         android:inputType="numberDecimal"
@@ -66,7 +69,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:drawableStart="@android:drawable/ic_lock_idle_alarm"
         android:ems="10"
+        android:foregroundTint="@color/design_default_color_primary"
         android:hint="Date"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
