@@ -58,4 +58,8 @@ public class ExpenseEntity {
     public void setExpenseType(String expenseType) {
         this.expenseType = expenseType;
     }
+    public String toString() {
+        return  expenseName + "\n" + amount + "\n" +expenseDate;
+
+    }
 }
