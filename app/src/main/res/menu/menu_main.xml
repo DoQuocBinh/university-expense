@@ -3,5 +3,5 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="New Expense" android:id="@+id/newExpense" />
-    <item android:title="Item" android:id="@+id/listExpense" />
+    <item android:title="List expenses" android:id="@+id/listExpense" />
 </menu>

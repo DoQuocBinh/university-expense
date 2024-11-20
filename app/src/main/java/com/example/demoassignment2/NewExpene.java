@@ -7,7 +7,11 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -88,6 +92,23 @@ public class NewExpene extends AppCompatActivity {
             }
         });
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.newExpense) {
+            Toast.makeText(getApplicationContext(),"You are here already!",Toast.LENGTH_LONG).show();
+
+        }
+        else if (item.getItemId()== R.id.listExpense) {
+            Intent intent = new Intent(NewExpene.this, AllExpenses.class);
+            startActivity(intent);
+        }
+        return true;
+    }
 
 }
